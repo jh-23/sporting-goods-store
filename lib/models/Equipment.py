@@ -6,11 +6,12 @@ class Equipment:
     
     all = {}
     
-    def __init__(self, name, price, description, id=None):
+    def __init__(self, name, price, description, department_id, id=None):
         self.id = id
         self.name = name
         self.price = price
         self.description = description
+        self.department_id = department_id
         
     @property
     def name(self):
@@ -51,6 +52,19 @@ class Equipment:
                 "description must be a non-empty string"
             )
             
+    @property
+    def department_id(self):
+        return self._department_id
+    
+    @department_id.setter
+    def department_id(self, department_id):
+        if type(department_id) is int and Department.find_by_id(department_id):
+            self.department_id = department_id
+        else:
+            raise ValueError(
+                "department_id must reference a department in the database"
+            )
+            
     @classmethod
     def create_table(cls):
         """ Create a new table to persist the attributes of Employee instances """
@@ -79,10 +93,10 @@ class Equipment:
             Update object id attribute using the primary key value of new row.
             Save the object in local dictionary using table row's PK as dictionary key"""
             sql = """
-                INSERT INTO equipments (name, price, description)
-                VALUES (?, ?, ?)
+                INSERT INTO equipments (name, price, description, department_id)
+                VALUES (?, ?, ?, ?)
             """
-            CURSOR.execute(sql, (self.name, self.price, self.description))
+            CURSOR.execute(sql, (self.name, self.price, self.description, self.department_id))
             CONN.commit()
 
             self.id = CURSOR.lastrowid
@@ -92,10 +106,10 @@ class Equipment:
         """Update the table row corresponding to the current Equipment instance."""
         sql = """
             UPDATE equipments
-            SET name = ?, price = ?, description = ?
+            SET name = ?, price = ?, description = ?, department_id = ?
             WHERE id = ?
         """
-        CURSOR.execute(sql, (self.name, self.price, self.description))
+        CURSOR.execute(sql, (self.name, self.price, self.description, self.department_id))
         CONN.commit()
     
     def delete(self):
@@ -115,9 +129,9 @@ class Equipment:
         self.id = None
         
     @classmethod
-    def create(cls, name, price, description):
+    def create(cls, name, price, description, department_id):
         """Initialize a new Equipment instance and save the object to the database"""
-        equipment = cls(name, price, description)
+        equipment = cls(name, price, description, department_id)
         equipment.save()
         return equipment 
     
@@ -130,8 +144,9 @@ class Equipment:
             equipment.name = row[1]
             equipment.price = row[2]
             equipment.description = row[3]
+            equipment.department_id = row[4]
         else:
-            equipment = cls(row[1], row[2], row[3])
+            equipment = cls(row[1], row[2], row[3], row[4])
             equipment.id = row[0]
             cls.all[equipment.id] = equipment
         return equipment
