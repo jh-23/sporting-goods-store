@@ -20,4 +20,5 @@ Equipment.create("YETI Tundra 45 Cooler", 300, "Capable of storing 28 cans using
 Equipment.create("Bowflex adjustable dumbell set", 429, "Easy to use selection dials that enable you to adjust your resistance from 5 lbs to 52.5 lbs", fitness.id)
 Equipment.create("Fitness Trampoline", 59.99, "features elastic resistance bands for optimal bounce", fitness.id)
 Equipment.create("Wilson Men's Golf Club Set", 329.99, "High Launch technology promotes distance and accuracy with every shot", sports.id)
-Equipment.create("Franklin 2-Player Pickleball Set", 34.99, )
+Equipment.create("Franklin 2-Player Pickleball Set", 34.99, "The 7-ply wood construction affords durabililty, while the nonslip grip handle offers comfort", sports.id)
+
