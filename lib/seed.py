@@ -15,4 +15,7 @@ def seed_database():
 outdoors = Department.create("Outdoors", "West Wing of Sporting Goods store")
 fitness = Department.create("Fitness", "East Wing of Sporting Goods store")
 sports = Department.create("Sports", "North Wing of Sporting Good store")
-Equipment.create("")
+Equipment.create("Magellan Outdoors Tent", 39.99, "4 person tent with 4.7 ft. center height", outdoors.id)
+Equipment.create("YETI Tundra 45 Cooler", 300, "Capable of storing 28 cans using a 2:1 ice-to-can ratio", outdoors.id)
+Equipment.create("Bowflex adjustable dumbell set", 429, "Easy to use selection dials that enable you to adjust your resistance from 5 lbs to 52.5 lbs", fitness.id)
+Equipment.create("Fitness Trampoline", 59.99, )
