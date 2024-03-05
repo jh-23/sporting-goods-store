@@ -5,10 +5,11 @@ class Department:
     
     all = {}
     
-    def __init__(self, name, location, id=None):
+    def __init__(self, name, location, department_id id=None):
         self.name = name
         self.id = id
         self.location = location
+        self.department_id = department_id
         
     @property
     def name(self):
@@ -36,6 +37,19 @@ class Department:
                 "Location must be a non-empty string"
             )
     
+    @property
+    def department_id(self):
+        return self._department_id
+    
+    @department_id.setter
+    def department_id(self, department_id):
+        if type(department_id) is int and Department.find_by_id(department_id):
+            self._department_id = department_id
+        else:
+            raise ValueError(
+                "department_id must reference a department in the database"
+            )
+    
     @classmethod
     def create_table(cls):
         """ Create a new table to persist the attributes of StoreDepartment Instances """
@@ -43,7 +57,9 @@ class Department:
             CREATE TABLE IF NOT EXISTS departments (
                 id INTEGER PRIMARY KEY,
                 name TEXT, 
-                location TEXT)
+                location TEXT,
+                department_id INTEGER,
+                FOREIGN KEY (department_id) REFERENCES departments(id))
             """
         CURSOR.execute(sql)
         CONN.commit()

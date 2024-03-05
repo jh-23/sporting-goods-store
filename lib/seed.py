@@ -15,3 +15,4 @@ def seed_database():
 outdoors = Department.create("Outdoors", "West Wing of Sporting Goods store")
 fitness = Department.create("Fitness", "East Wing of Sporting Goods store")
 sports = Department.create("Sports", "North Wing of Sporting Good store")
+Equipment.create("")
