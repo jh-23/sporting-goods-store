@@ -6,7 +6,7 @@ class Equipment:
     
     all = {}
     
-    def __init__(self, name, price, description):
+    def __init__(self, name, price, description, id=None):
         self.id = id
         self.name = name
         self.price = price
