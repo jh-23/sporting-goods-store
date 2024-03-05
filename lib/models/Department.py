@@ -5,7 +5,7 @@ class Department:
     
     all = {}
     
-    def __init__(self, name, location):
+    def __init__(self, name, location, id=None):
         self.name = name
         self.id = id
         self.location = location
