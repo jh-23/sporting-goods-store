@@ -4,7 +4,8 @@ from helpers import (
     exit_program,
     create_equipment,
     delete_equipment,
-    
+    list_department_equipments,
+    find_equipment_by_name
 )
 
 
