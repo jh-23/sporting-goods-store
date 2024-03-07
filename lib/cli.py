@@ -8,8 +8,6 @@ from helpers import (
 
 def main():
     
-    sportsEquipment = []
-    
     while True:
         menu()
         choice = input("> ")
@@ -20,7 +18,6 @@ def main():
             nEquipment = input("Enter the title of the sports equipment: ")
             nPrice = input("Enter the price of the new sports equipment: ")
             nDescription = input("Enter the description of the new sports equipment: ")
-            sportsEquipment.append([nEquipment, nPrice, nDescription])
         elif choice == "2":
             print("View sports equipment by title...")
             keyword = input("Enter title of equpiment: ")
