@@ -25,22 +25,22 @@ def create_department():
     name = input("Enter the Sporting Goods Store Department name: ")
     location = input("Enter the location of the Department in the Sporting Good Store: ")
     try:
-        Department = Department.create(name, location)
-        print(f'Success: {Department}')
+        department = Department.create(name, location)
+        print(f'Success: {department}')
     except Exception as exc:
         print("Error creating department: ", exc)
 
 def update_department():
     id_ = input("Enter the Sporting Goods department id: ")
-    if Department := Department.find_by_id(id_):
+    if department := Department.find_by_id(id_):
         try:
             name = input("Enter the Sporting Goods Department's new name: ")
-            Department.name = name
+            department.name = name
             location = input("Enter the department's new location: ")
-            Department.location = location
+            department.location = location
             
-            Department.update()
-            print(f'Success: {Department}')
+            department.update()
+            print(f'Success: {department}')
         except Exception as exc:
             print("Error updating Sporting Goods department: ", exc)
     else:
@@ -48,8 +48,8 @@ def update_department():
     
 def delete_department():
     id_ = input("Enter the Sporting Goods Department id: ")
-    if Department := Department.find_by_id(id_):
-        Department.delete()
+    if department := Department.find_by_id(id_):
+        department.delete()
         print(f'Department {id_} deleted')
     else:
         print(f'Department {id_} not found')
@@ -100,4 +100,18 @@ def update_equipment():
             print("Error updating equipment: ", exc)
     else:
         print(f'Equipment {id_} not found')
+
+def delete_equipment():
+    id_ = input("Enter the equpiment's id: ")
+    if equipment := Equipment.find_by_id(id_):
+        equipment.delete()
+        print(f'Equipment {id_} deleted')
+    else:
+        print(f'Equipment {id_} not found')
         
+def list_department_equipments():
+    id_ = input("Enter the department's id: ")
+    if department := Department.find_by_id(id_):
+        equipments = department.equipments()
+        for equipment in equipments:
+            print(equipment)
