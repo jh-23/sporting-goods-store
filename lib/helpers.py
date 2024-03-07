@@ -115,3 +115,5 @@ def list_department_equipments():
         equipments = department.equipments()
         for equipment in equipments:
             print(equipment)
+    else:
+        print(f'Department {id_} not found')

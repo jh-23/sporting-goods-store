@@ -2,7 +2,9 @@
 
 from helpers import (
     exit_program,
-    helper_1
+    create_equipment,
+    delete_equipment,
+    
 )
 
 
@@ -15,20 +17,10 @@ def main():
             exit_program()
         elif choice == "1":
             print("Adding sports equipment...")
-            nEquipment = input("Enter the title of the sports equipment: ")
-            nPrice = input("Enter the price of the new sports equipment: ")
-            nDescription = input("Enter the description of the new sports equipment: ")
         elif choice == "2":
             print("View sports equipment by title...")
-            keyword = input("Enter title of equpiment: ")
-            for equipment in sportsEquipment:
-                if keyword in equipment:
-                    print(equipment)
         elif choice == "3":
             print("Displaying all sports equipment...")
-            print(sportsEquipment)
-            for i in range(len(sportsEquipment)):
-                print(sportsEquipment[i])
         else:
             print("Invalid choice")
 
