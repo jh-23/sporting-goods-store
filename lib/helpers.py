@@ -72,5 +72,32 @@ def find_equipment_by_id():
     print(equipment) if equipment else print(f'Equipment {id_} not found')
     
 def create_equipment():
-    
+    name = input("Enter the equipment's name: ")
+    price = input("Enter the equipment's price: ")
+    description = input("Enter the equipment's description: ")
+    department_id = input("Enter the equipment's department id: ")
+    print(type(department_id))
+    try:
+        equipment = Equipment.create(name, int(price), description, int(department_id))
+        print(f'Success: {equipment}')
+    except Exception as exc:
+        print("Error creating equipment: ", exc)
+        
+def update_equipment():
+    id_ = input("Enter the equipment's id: ")
+    if equipment := Equipment.find_by_id(id_):
+        try:
+            name = input("Enter the equipment's new name: ")
+            equipment.name = name
+            price = input("Enter the equipment's new price: ")
+            equipment.price = price
+            department_id = input("Enter the equipment's new department id: ")
+            equipment.department_id = int(department_id)
             
+            equipment.update()
+            print(f'Success: {equipment}')
+        except Exception as exc:
+            print("Error updating equipment: ", exc)
+    else:
+        print(f'Equipment {id_} not found')
+        
