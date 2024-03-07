@@ -22,3 +22,6 @@ Equipment.create("Fitness Trampoline", 59.99, "features elastic resistance bands
 Equipment.create("Wilson Men's Golf Club Set", 329.99, "High Launch technology promotes distance and accuracy with every shot", sports.id)
 Equipment.create("Franklin 2-Player Pickleball Set", 34.99, "The 7-ply wood construction affords durabililty, while the nonslip grip handle offers comfort", sports.id)
 
+seed_database()
+print("Seeded database")
+
