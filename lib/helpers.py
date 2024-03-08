@@ -1,10 +1,12 @@
 # lib/helpers.py
-from models.Department import Department
-from models.Equipment import Equipment
+from models.department import Department
+from models.equipment import Equipment
 
 def exit_program():
     print("Goodbye!")
     exit()
+    
+#Department
     
 def list_departments():
     departments = Department.get_all()

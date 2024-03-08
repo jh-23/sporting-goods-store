@@ -1,6 +1,6 @@
 #lib/models/Equipment.py
 from models.__init__ import CURSOR, CONN
-from models.Department import Department
+from models.department import Department
 
 class Equipment:
     
@@ -33,7 +33,7 @@ class Equipment:
     @price.setter
     def price(self, price):
         if isinstance(price, int):
-            self.price = price
+            self._price = price
         else:
             raise ValueError(
                 "price must be a non-empty string"
@@ -67,7 +67,7 @@ class Equipment:
             
     @classmethod
     def create_table(cls):
-        """ Create a new table to persist the attributes of Employee instances """
+        """ Create a new table to persist the attributes of Equipment instances """
         sql = """
             CREATE TABLE IF NOT EXISTS equipments (
             id INTEGER PRIMARY KEY,
@@ -172,7 +172,7 @@ class Equipment:
             WHERE id = ?
         """
         
-        row = CURSOR.exectue(sql, (id,)).fetchone()
+        row = CURSOR.execute(sql, (id,)).fetchone()
         return cls.instance_from_db(row) if row else None
     
     @classmethod

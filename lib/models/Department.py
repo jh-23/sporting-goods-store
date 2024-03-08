@@ -38,7 +38,7 @@ class Department:
     
     @classmethod
     def create_table(cls):
-        """ Create a new table to persist the attributes of StoreDepartment Instances """
+        """ Create a new table to persist the attributes of Store Department Instances """
         sql = """
             CREATE TABLE IF NOT EXISTS departments (
                 id INTEGER PRIMARY KEY,
@@ -141,7 +141,7 @@ class Department:
             WHERE id = ?
         """
         
-        row = CURSOR.exectue(sql, (id,)).fetchone()
+        row = CURSOR.execute(sql, (id,)).fetchone()
         return cls.instance_from_db(row) if row else None
     
     @classmethod
