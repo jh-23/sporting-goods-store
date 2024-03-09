@@ -36,12 +36,12 @@ class Equipment:
             self._price = price
         else:
             raise ValueError(
-                "price must be a non-empty string"
+                "price must be an integer"
             )
             
     @property
     def description(self):
-        return self.description
+        return self._description
     
     @description.setter
     def description(self, description):
@@ -59,7 +59,7 @@ class Equipment:
     @department_id.setter
     def department_id(self, department_id):
         if type(department_id) is int and Department.find_by_id(department_id):
-            self.department_id = department_id
+            self._department_id = department_id
         else:
             raise ValueError(
                 "department_id must reference a department in the database"
@@ -74,6 +74,7 @@ class Equipment:
             name TEXT,
             price INT,
             description TEXT,
+            department_id INT,
             FOREIGN KEY (department_id) REFERENCES departments(id))
         """
         CURSOR.execute(sql)
