@@ -158,4 +158,14 @@ class Department:
     
     def equipments(self):
         """Return list of equipment associated with current department"""
+        from models.equipment import Equipment
+        sql = """
+            SELECT * FROM equipments
+            WHERE department_id = ?
+        """
+        CURSOR.execute(sql, (self.id,),)
+        
+        rows = CURSOR.fetchall()
+        return [Equipment.instance_from_db(row) for row in rows]
+        
         

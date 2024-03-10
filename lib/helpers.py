@@ -11,17 +11,25 @@ def list_departments():
     for i, department in enumerate(departments, start=1):
         print(i, department.name)
         
-def list_department_equipments(department):
-    equipment = Equipment.get_all()
-    equipments = department.equipments()
-    for equipment in department:
-        print(department.equipments)
+def list_department_equipments():
+    name = input("Enter the Sporting Good's department name: ")
+    if department := Department.find_by_name(name):
+        equipments = department.equipments()
+        for i, equipment in enumerate(equipments, start=1):
+            print(i, equipment.name, equipment.price, equipment.description)
+
+# def create_equipment(department):
+#     name = input("Enter the equipment's name: ")
+#     price = input("Enter the equipment's price: ")
+#     description = input("Enter the equipment's description: ")
+#     try: 
+#         equipment = Equipment.create(name, int(price), description, department.id)
+#         print(f'Success: {equipment}')
+#     except Exception as exc:
+#         print("Error creating equipment: ", exc)
+
     
     
-    
-
-
-
 
 
 # def create_equipment(department):
@@ -44,8 +52,6 @@ def list_department_equipments(department):
 #             print(equipment)
 #     else:
 #         print(f'Department {id_} not found')
-
-
 
 
 
