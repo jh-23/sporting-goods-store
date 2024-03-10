@@ -3,7 +3,9 @@
 from helpers import (
     exit_program,
     list_departments,
-    list_department_equipments
+    list_department_equipments,
+    create_equipment, 
+    delete_equipment
 )
 
 def menu():
@@ -11,7 +13,9 @@ def menu():
     print("Please select an option:")
     print("0. Exit the program")
     print("1. Display all Sporting Goods Departments")
-    
+
+def menu2():
+    print("Select which Sporting Good's Department you wish to view: ")
     
 def menu3():
     print("Select if you would like to add or delete equipment to the Sporting Goods Department: ")
@@ -25,15 +29,18 @@ def main():
         elif choice == "1":
             print("Sporting Goods Store Department's: ")
             list_departments()
+            menu2()
             choice = input("> ")
             if choice == "1":
                 list_department_equipments()
                 menu3()
                 choice = input("> ")
-                # if choice == "1":
-                #     print("Add equipment to department: ")
-                # elif choice == "2":
-                #     print("Delete equipment from department: ")
+                if choice == "1":
+                    print("Add equipment to department: ")
+                    create_equipment()
+                elif choice == "2":
+                    print("Delete equipment from department: ")
+                    delete_equipment()
             elif choice == "2":
                 list_department_equipments()
             elif choice == "3":

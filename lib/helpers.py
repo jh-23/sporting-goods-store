@@ -16,7 +16,31 @@ def list_department_equipments():
     if department := Department.find_by_name(name):
         equipments = department.equipments()
         for i, equipment in enumerate(equipments, start=1):
-            print(f'i, Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
+            print(i, f'Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
+            
+def create_equipment(department):
+    name = input("Enter the equipment's name: ")
+    price = input("Enter the equipment's price: ")
+    description = input("Enter the equipment's description: ")
+    department = input("Enter the department's name: ")
+    try:
+        equipment = Equipment.create(name, int(price), description, department.id)
+        print(f'Success: {equipment}')
+    except Exception as exc:
+        print("Error creating equipment: ", exc)
+        
+def delete_equipment():
+    name = input("Enter the equipment's name: ")
+    if equipment := Equipment.find_by_name(name.title()):
+        equipment.delete()
+        print(f'Equipment {name} deleted')
+    else:
+        print(f'Equipment {name} not found')
+    
+        
+        
+        
+        
 
 # def create_equipment(department):
 #     name = input("Enter the equipment's name: ")
