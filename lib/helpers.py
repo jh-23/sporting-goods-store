@@ -16,7 +16,7 @@ def list_department_equipments():
     if department := Department.find_by_name(name):
         equipments = department.equipments()
         for i, equipment in enumerate(equipments, start=1):
-            print(i, equipment.name, equipment.price, equipment.description)
+            print(f'i, Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
 
 # def create_equipment(department):
 #     name = input("Enter the equipment's name: ")
