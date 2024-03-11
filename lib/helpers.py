@@ -18,16 +18,17 @@ def list_department_equipments():
         for i, equipment in enumerate(equipments, start=1):
             print(i, f'Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
             
-def create_equipment(department):
+def create_equipment():
     name = input("Enter the equipment's name: ")
     price = input("Enter the equipment's price: ")
     description = input("Enter the equipment's description: ")
     department = input("Enter the department's name: ")
-    try:
-        equipment = Equipment.create(name, int(price), description, department.id)
-        print(f'Success: {equipment}')
-    except Exception as exc:
-        print("Error creating equipment: ", exc)
+    if department == Department.name:
+        try:
+            equipment = Equipment.create(name, int(price), description, department.id)
+            print(f'Success: {equipment}')
+        except Exception as exc:
+            print("Error creating equipment: ", exc)
         
 def delete_equipment():
     name = input("Enter the equipment's name: ")
