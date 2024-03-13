@@ -18,12 +18,11 @@ def list_department_equipments():
         for i, equipment in enumerate(equipments, start=1):
             print(i, f'Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
             
-def create_equipment(department):
+def create_equipment():
     name = input("Enter the equipment's name: ")
     price = input("Enter the equipment's price: ")
     description = input("Enter the equipment's description: ")
     department = input("Enter the department's name: ")
-    breakpoint()
     if department := Department.find_by_name(department):
         try:
             equipment = Equipment.create(name, int(price), description, department.id)

@@ -37,7 +37,7 @@ def main():
             print("Sporting Goods Store Department's: ")
             list_departments()
             # menu2()
-            # choice = input("> ")
+            choice = input("> ")
             if choice == "1":
                 list_department_equipments()
                 menu3()
@@ -50,6 +50,10 @@ def main():
                     delete_equipment()
                 elif choice =="3":
                     print("Back to department menu")
+                    list_departments()
+                else:
+                    print("Not a valid option, exiting program")
+                    exit_program()
             elif choice == "2":
                 list_department_equipments()
                 menu3()
@@ -62,6 +66,7 @@ def main():
                     delete_equipment()
                 elif choice == "3":
                     print("Back to department menu")
+                    list_departments()
                 else:
                     print("Not a valid option, exiting program")
                     exit_program()
@@ -76,8 +81,9 @@ def main():
                     print("Delete equipment from department")
                 elif choice == "3":
                     print("Back to department menu")
+                    list_departments()
                 else:
-                    print("Not a valid optin, exiting program")
+                    print("Not a valid option, exiting program")
                     exit_program()
             elif choice == "4":
                 exit_program()       
