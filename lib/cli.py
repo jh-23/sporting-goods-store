@@ -48,12 +48,13 @@ def main():
                 elif choice == "2":
                     print("Delete equipment from department")
                     delete_equipment()
-                elif choice =="3":
+                elif choice == "3":
                     print("Back to department menu")
                     list_departments()
-                else:
-                    print("Not a valid option, exiting program")
+                elif choice == "4":
                     exit_program()
+                else:
+                    print("Not a valid option")
             elif choice == "2":
                 list_department_equipments()
                 menu3()
@@ -67,8 +68,10 @@ def main():
                 elif choice == "3":
                     print("Back to department menu")
                     list_departments()
+                elif choice == "4":
+                    exit_program()
                 else:
-                    print("Not a valid option, exiting program")
+                    print("Not a valid option")
                     exit_program()
             elif choice == "3":
                 list_department_equipments()
@@ -82,9 +85,10 @@ def main():
                 elif choice == "3":
                     print("Back to department menu")
                     list_departments()
-                else:
-                    print("Not a valid option, exiting program")
+                elif choice == "4":
                     exit_program()
+                else:
+                    print("Not a valid option")
             elif choice == "4":
                 exit_program()       
         else:
