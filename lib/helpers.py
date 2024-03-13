@@ -26,7 +26,7 @@ def create_equipment():
     if department := Department.find_by_name(department):
         try:
             equipment = Equipment.create(name, int(price), description, department.id)
-            print(f'Success: {equipment}')
+            print(f'Success: {equipment.name}')
         except Exception as exc:
             print("Error creating equipment: ", exc)
         
