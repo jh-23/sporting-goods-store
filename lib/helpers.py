@@ -12,18 +12,19 @@ def list_departments():
         print(i, department.name)
         
 def list_department_equipments():
-    name = input("Enter the Sporting Good's department name: ")
+    name = input("Enter the name of the Sporting Good's department you wish to view: ").title()
     if department := Department.find_by_name(name):
         equipments = department.equipments()
         for i, equipment in enumerate(equipments, start=1):
             print(i, f'Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
             
-def create_equipment():
+def create_equipment(department):
     name = input("Enter the equipment's name: ")
     price = input("Enter the equipment's price: ")
     description = input("Enter the equipment's description: ")
     department = input("Enter the department's name: ")
-    if department == Department.name:
+    breakpoint()
+    if department := Department.find_by_name(department):
         try:
             equipment = Equipment.create(name, int(price), description, department.id)
             print(f'Success: {equipment}')
