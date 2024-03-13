@@ -22,7 +22,7 @@ def create_equipment():
     name = input("Enter the equipment's name: ")
     price = input("Enter the equipment's price: ")
     description = input("Enter the equipment's description: ")
-    department = input("Enter the department's name: ")
+    department = input("Enter the department's name: ").title()
     if department := Department.find_by_name(department):
         try:
             equipment = Equipment.create(name, int(price), description, department.id)
