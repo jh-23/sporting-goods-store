@@ -12,19 +12,19 @@ def menu():
     print("------Welcome to the Sporting Goods Store!--------")
     print("Please select an option:")
     print("0. Exit the program")
-    print("1. Display all Sporting Goods Department's")
+    print("1. To display all Sporting Goods Department's")
 
 def menu2():
     print("Please select which Sporting Good's Department you wish to view: ")
-    print("1. To view Outdoors department equipment")
-    print("2. To view Fitness department equipment")
-    print("3. To view Sports department equipment")
+    print("1. To view equipment from the Outdoors department")
+    print("2. To view equipment from the Fitness department")
+    print("3. To view equipment from the Sports department")
     
 def menu3():
     print("Select what you would like to do with this department's equipment: ")
-    print("1. To add an equipment to the department")
-    print("2. To delete an equipment from the department")
-    print("3. To go back to the department menu")
+    print("1. Add equipment to a Sporting Goods department")
+    print("2. Delete equipment from a Sporting Goods department")
+    print("3. To return to the Sporting Goods Department menu")
     print("4. Exit the program")
 
 def main():
