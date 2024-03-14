@@ -31,14 +31,14 @@ def create_equipment():
             print("Error creating equipment: ", exc)
         
 def delete_equipment():
-    name = input("Enter the equipment's name: ")
-    if equipment := Equipment.find_by_name(name.title()):
+    name = input("Enter the equipment's name: ").title()
+    if equipment := Equipment.find_by_name(name):
         equipment.delete()
         print(f'Equipment {name} deleted')
     else:
         print(f'Equipment {name} not found')
     
-def equipment_less_than_50():
+def equipments_less_than_50():
     equipments = Equipment.get_all()
     for equipment in equipments:
         if equipment.price <= 50:
