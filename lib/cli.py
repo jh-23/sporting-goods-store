@@ -5,7 +5,8 @@ from helpers import (
     list_departments,
     list_department_equipments,
     create_equipment, 
-    delete_equipment
+    delete_equipment,
+    equipment_less_than_50
 )
 
 def menu():
@@ -26,6 +27,7 @@ def menu3():
     print("2. Delete equipment from a Sporting Goods department")
     print("3. To return to the Sporting Goods Department menu")
     print("4. Exit the program")
+    print("5. View all equipment under $50 at the Sporting Good's store")
 
 def main():
     while True:
@@ -53,6 +55,8 @@ def main():
                     list_departments()
                 elif choice == "4":
                     exit_program()
+                elif choice == "5":
+                    equipment_less_than_50()
                 else:
                     print("Not a valid option")
             elif choice == "2":

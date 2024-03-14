@@ -42,7 +42,7 @@ def equipment_less_than_50():
     equipments = Equipment.get_all()
     for equipment in equipments:
         if equipment.price <= 50:
-            print(equipment)
+            print(equipment.name)
         
         
 
