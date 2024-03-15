@@ -24,6 +24,7 @@ def menu2():
     
 def menu3():
     print("Select what you would like to do with a Sporting Goods Department: ")
+    print("\n")
     print("1. Add equipment to a Sporting Goods department")
     print("2. Delete equipment from a Sporting Goods department")
     print("3. View all equipment under $50 at the Sporting Good's store")
@@ -44,6 +45,7 @@ def main():
             menu2()
             choice = input("> ")
             if choice == "1":
+                print("\n")
                 list_department_equipments()
                 menu3()
                 choice = input("> ")
@@ -65,6 +67,7 @@ def main():
                     print("Not a valid option")
             elif choice == "2":
                 list_department_equipments()
+                print("\n")
                 menu3()
                 choice = input("> ")
                 if choice == "1":
@@ -86,6 +89,7 @@ def main():
                     exit_program()
             elif choice == "3":
                 list_department_equipments()
+                print("\n")
                 menu3()
                 choice = input("> ")
                 if choice == "1":

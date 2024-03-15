@@ -16,7 +16,7 @@ def list_department_equipments():
     if department := Department.find_by_name(name):
         equipments = department.equipments()
         for i, equipment in enumerate(equipments, start=1):
-            print(i, f'Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
+            print(i, f'Department: {department.name}, Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
             
 def create_equipment():
     name = input("Enter the equipment's name: ")
@@ -44,7 +44,22 @@ def equipments_less_than_50():
         if equipment.price <= 50:
             print(equipment.name)
         
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # def create_equipment(department):
 #     name = input("Enter the equipment's name: ")
