@@ -22,17 +22,20 @@ def create_department():
     try: 
         department = Department.create(name, location)
         print(f'Success: {department.name}')
+        print("\n")
     except Exception as exc:
         print("Error creating Sporting Goods department: ", exc)
+    
+    print("\n")
     return list_departments()
 
 def delete_department():
-    number = int(input("Enter the Sporting Goods Department name: "))
+    number = int(input("Enter the number associated with the Sporting Goods department you wish to delete: "))
     departments = Department.get_all()
     if number <= len(departments):
         department = departments[number - 1]
         department.delete()
-        print(f'Department: {department} deleted')
+        print(f'Department: {department.name} deleted')
         return list_departments()
     else:
         print(f'Department: {department} not found')

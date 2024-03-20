@@ -22,6 +22,7 @@ def main_menu():
     print("\n")
 
 def department_menu_options():
+    print("\n")
     print("Please select which option you would like to do next: ")
     print("\n")
     print("0. Exit the program")
