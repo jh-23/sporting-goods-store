@@ -95,7 +95,7 @@ def equipments_menu(department):
         elif choice == "1":
             create_equipment(department)
         elif choice == "2":
-            delete_equipment()
+            delete_equipment(department)
         elif choice == "3":
             show_equipment_details(department)
         elif choice == "4":

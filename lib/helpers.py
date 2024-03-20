@@ -25,7 +25,6 @@ def create_department():
         print("\n")
     except Exception as exc:
         print("Error creating Sporting Goods department: ", exc)
-    
     print("\n")
     return list_departments()
 
@@ -66,28 +65,36 @@ def show_equipment_details(department):
         return equipment
 
 def create_equipment(department):
-    name = input("Enter the equipment's name: ")
+    name = input("Enter the equipment's name: ").title()
     price = input("Enter the equipment's price: ")
     description = input("Enter the equipment's description: ")
     try:
         equipment = Equipment.create(name, int(price), description, department.id)
-        print(f'Success: {equipment.name}')
+        print(f'Success: {equipment.name} created')
     except Exception as exc:
         print("Error creating equipment: ", exc)
 
-    
-
-
-    #department in delete_equipment() inside paranthesis
         
 def delete_equipment(department):
-    name = input("Enter the equipment's name: ").title()
-    if equipment := Equipment.find_by_name(name):
+    number = int(input("Enter the number associated with the equipment you wish to delete: "))
+    equipment_list = department.equipments()
+    if number <= len(equipment_list):
+        equipment = equipment_list[number - 1]
         equipment.delete()
-        print(f'Equipment {name} deleted')
+        print(f'Equipment: {equipment.name} deleted')
+        return 
     else:
-        print(f'Equipment {name} not found')
+        print(f'Equipment: {equipment.name} not found')
     
+
+
+
+
+
+
+
+
+ 
 def equipments_less_than_50():
     equipments = Equipment.get_all()
     for equipment in equipments:
