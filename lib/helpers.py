@@ -11,38 +11,57 @@ def list_departments():
     for i, department in enumerate(departments, start=1):
         print(i, department.name)
         
+def show_all_department_details():
+    departments = Department.get_all()
+    for i, department in enumerate(departments, start=1):
+        print(i, f'Department: {department.name}, Department location in store: {department.location}')
+        
 def create_department():
-    name = input("Enter the Sporting Goods Department's name: ").title()
+    name = input("Enter the Sporting Goods Department's name: ")
     location = input("Enter the Sporting Goods Department location in the store: ")
     try: 
         department = Department.create(name, location)
         print(f'Success: {department.name}')
     except Exception as exc:
         print("Error creating Sporting Goods department: ", exc)
+    return list_departments()
 
 def delete_department():
-    name = input("Enter the Sporting Goods Department name: ")
-    if department := Department.find_by_name(name):
+    number = int(input("Enter the Sporting Goods Department name: "))
+    departments = Department.get_all()
+    if number <= len(departments):
+        department = departments[number - 1]
         department.delete()
-        print(f'Department: {name} deleted')
+        print(f'Department: {department} deleted')
+        return list_departments()
     else:
-        print(f'Department: {name} not found')
+        print(f'Department: {department} not found')
+               
+def select_department_equipment():
+    number = int(input("Enter the number of department you wish to view: "))
+    print("\n")
+    departments = Department.get_all()
+    if number <= len(departments):
+        department = departments[number - 1]
+        equipment_list = department.equipments()
+        for i, equipment in enumerate(equipment_list, start=1):
+            print(i, f'Equipment: {equipment.name}')
+        return department
+    else:
+        print("Not a valid option")
         
-        
-# def pick_department():
-#     name = input("Enter the name of the Sporting Good's department you wish to view: ").title()
-#     if department := Department.find_by_name(name):
-#         equipments = department.equipments()
-#         for i, equipment in enumerate(equipments, start=1):
-#             print(i, f'Department: {department.name}, Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
-        
-def list_department_equipments():
-    name = input("Enter the name of the Sporting Good's department you wish to view: ").title()
-    if department := Department.find_by_name(name):
-        equipments = department.equipments()
-        for i, equipment in enumerate(equipments, start=1):
-            print(i, f'Department: {department.name}, Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
-            
+def show_equipment_details(department):
+    equipment_list = department.equipments()
+    for i, equipment in enumerate(equipment_list, start=1):
+        print(i, equipment.name)
+    number = int(input("Enter the equipment number to view its details: "))
+    print("\n")
+    
+    if number <= len(equipment_list):
+        equipment = equipment_list[number - 1]
+        print(i, f'Equipment: {equipment.name}, Price($): {equipment.price}, Description: {equipment.description}')
+        return equipment
+
 def create_equipment(department):
     name = input("Enter the equipment's name: ")
     price = input("Enter the equipment's price: ")
@@ -52,6 +71,11 @@ def create_equipment(department):
         print(f'Success: {equipment.name}')
     except Exception as exc:
         print("Error creating equipment: ", exc)
+
+    
+
+
+    #department in delete_equipment() inside paranthesis
         
 def delete_equipment(department):
     name = input("Enter the equipment's name: ").title()
@@ -204,3 +228,20 @@ def equipments_less_than_50():
     # ask user to pick one 
     # department = Department.get_all()
     # list_department_equipments(department)
+    
+    
+    # def pick_department():
+#     name = input("Enter the name of the Sporting Good's department you wish to view: ").title()
+#     if department := Department.find_by_name(name):
+#         equipments = department.equipments()
+#         for i, equipment in enumerate(equipments, start=1):
+#             print(i, f'Department: {department.name}, Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
+
+
+# def list_department_equipments():
+#     name = input("Enter the name of the Sporting Good's department you wish to view: ").title()
+#     if department := Department.find_by_name(name):
+#         equipments = department.equipments()
+#         for i, equipment in enumerate(equipments, start=1):
+#             print(i, f'Department: {department.name}, Equipment: {equipment.name}, Price ($): {equipment.price}, Description: {equipment.description}')
+            
