@@ -14,7 +14,7 @@ def list_departments():
 def show_all_department_details():
     departments = Department.get_all()
     for i, department in enumerate(departments, start=1):
-        print(i, f'Department: {department.name}, Department location in store: {department.location}')
+        print(f'{i}. Department: {department.name}, Department location in store: {department.location}')
         
 def create_department():
     name = input("Enter the Sporting Goods Department's name: ")
@@ -26,6 +26,8 @@ def create_department():
     except Exception as exc:
         print("Error creating Sporting Goods department: ", exc)
     print("\n")
+    print("Sporting Goods Store Departments: ")
+    print("\n")
     return list_departments()
 
 def delete_department():
@@ -35,6 +37,8 @@ def delete_department():
         department = departments[number - 1]
         department.delete()
         print(f'Department: {department.name} deleted')
+        print("\n")
+        print("Sporting Goods Store Departments: ")
         return list_departments()
     else:
         print(f'Department: {department} not found')
