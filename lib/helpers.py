@@ -8,8 +8,9 @@ def exit_program():
 
 def list_departments():
     departments = Department.get_all()
+    print("\n")
     for i, department in enumerate(departments, start=1):
-        print(i, department.name)
+        print(f'{i}. {department.name}')
         
 def show_all_department_details():
     departments = Department.get_all()
@@ -39,6 +40,7 @@ def delete_department():
         print(f'Department: {department.name} deleted')
         print("\n")
         print("Sporting Goods Store Departments: ")
+        print("\n")
         return list_departments()
     else:
         print(f'Department: {department} not found')
@@ -51,8 +53,10 @@ def select_department_equipment():
     if number <= len(departments):
         department = departments[number - 1]
         equipment_list = department.equipments()
+        print(f'Please see the {department.name} equipment list: ')
+        print('\n')
         for i, equipment in enumerate(equipment_list, start=1):
-            print(i, f'Equipment: {equipment.name}')
+            print(f'{i}. Equipment: {equipment.name}')
         return department
     else:
         print("Not a valid option")
@@ -66,7 +70,9 @@ def show_equipment_details(department):
     print("\n")
     if number <= len(equipment_list):
         equipment = equipment_list[number - 1]
-        print(i, f'Equipment: {equipment.name}, Price($): {equipment.price}, Description: {equipment.description}')
+        print(f'Please see the {department.name} equipment: ')
+        print("\n")
+        print(f'{i}. Equipment: {equipment.name}, Price($): {equipment.price}, Description: {equipment.description}')
         return equipment
     else:
         print("Not a valid option")
@@ -81,13 +87,13 @@ def create_equipment(department):
         print(f'Success: {equipment.name} created')
         print("\n")
         equipment_list = department.equipments()
-        print(f'{department.name} equipment list: ')
+        print(f'{department.name} Department equipment list: ')
+        print("\n")
         for i, equipment in enumerate(equipment_list, start=1):
             print(f'{i}. {equipment.name}')
     except Exception as exc:
         print("Error creating equipment: ", exc)
 
-        
 def delete_equipment(department):
     number = int(input("Enter the number associated with the equipment you wish to delete: "))
     equipment_list = department.equipments()
@@ -98,7 +104,7 @@ def delete_equipment(department):
         print(f'Equipment: {equipment.name} deleted')
         equipment_list = department.equipments()
         print("\n")
-        print(f'{department.name} equipment list: ')
+        print(f'{department.name} Department equipment list: ')
         for i, equipment in enumerate(equipment_list, start=1):
             print(f'{i}. {equipment.name}')
     else:

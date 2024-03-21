@@ -36,7 +36,7 @@ def department_menu_options():
     
 def equipment_menu_options():
     print("\n")
-    print("Select what you would like to do with the equipment of the Sporting Goods Department: ")
+    print("Select what you would like to do with the equipment of this Sporting Goods Department: ")
     print("\n")
     print("1. Add equipment to this department")
     print("2. Delete equipment from this department")
