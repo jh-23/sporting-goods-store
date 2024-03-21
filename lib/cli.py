@@ -9,7 +9,6 @@ from helpers import (
     create_equipment,
     show_equipment_details,
     delete_equipment,
-    equipments_less_than_50, 
     select_department_equipment
 )
 
@@ -17,6 +16,7 @@ def main_menu():
     print("------Welcome to the Sporting Goods Store!--------")
     print("\n")
     print("Please select an option:")
+    print("\n")
     print("0. Exit the program")
     print("1. To display all Sporting Goods Department's")
     print("\n")
@@ -53,9 +53,7 @@ def main():
             exit_program()
         elif choice == "1":
             print("Sporting Goods Store Department's: ")
-            print("\n")
             list_departments()
-            print("\n")
             departments_menu()
         else:
             print("Invalid choice")
@@ -68,14 +66,11 @@ def departments_menu():
             exit_program()
         elif choice == "1":
             list_departments()
-            print("\n")
         elif choice == "2":
             show_all_department_details()
         elif choice == "3":
             list_departments()
-            print("\n")
             department = select_department_equipment()
-            print("\n")
             equipments_menu(department)
         elif choice == "4":
             create_department()
@@ -84,7 +79,7 @@ def departments_menu():
         elif choice == "B" or "b":
             main()
         else:
-            print("Invalid Choice")
+            print("Invalid Option")
             
 def equipments_menu(department):
     while True:

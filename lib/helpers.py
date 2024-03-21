@@ -3,7 +3,7 @@ from models.department import Department
 from models.equipment import Equipment
 
 def exit_program():
-    print("Goodbye!")
+    print("Goodbye!  Please visit the Sporting Goods Store again!")
     exit()
 
 def list_departments():
@@ -40,6 +40,7 @@ def delete_department():
         print(f'Department: {department} not found')
                
 def select_department_equipment():
+    print("\n")
     number = int(input("Enter the number of department you wish to view: "))
     print("\n")
     departments = Department.get_all()
@@ -56,12 +57,15 @@ def show_equipment_details(department):
     equipment_list = department.equipments()
     for i, equipment in enumerate(equipment_list, start=1):
         print(i, equipment.name)
+    print("\n")
     number = int(input("Enter the equipment number to view its details: "))
     print("\n")
-    
     if number <= len(equipment_list):
         equipment = equipment_list[number - 1]
         print(i, f'Equipment: {equipment.name}, Price($): {equipment.price}, Description: {equipment.description}')
+        return equipment
+    else:
+        print("Not a valid option")
         return equipment
 
 def create_equipment(department):
@@ -71,6 +75,11 @@ def create_equipment(department):
     try:
         equipment = Equipment.create(name, int(price), description, department.id)
         print(f'Success: {equipment.name} created')
+        print("\n")
+        equipment_list = department.equipments()
+        print(f'{department.name} equipment list: ')
+        for i, equipment in enumerate(equipment_list, start=1):
+            print(f'{i}. {equipment.name}')
     except Exception as exc:
         print("Error creating equipment: ", exc)
 
@@ -81,8 +90,13 @@ def delete_equipment(department):
     if number <= len(equipment_list):
         equipment = equipment_list[number - 1]
         equipment.delete()
+        print("\n")
         print(f'Equipment: {equipment.name} deleted')
-        return 
+        equipment_list = department.equipments()
+        print("\n")
+        print(f'{department.name} equipment list: ')
+        for i, equipment in enumerate(equipment_list, start=1):
+            print(f'{i}. {equipment.name}')
     else:
         print(f'Equipment: {equipment.name} not found')
     
