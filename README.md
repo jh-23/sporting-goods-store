@@ -2,8 +2,7 @@ Project Title: Sporting Goods Department Store CLI
 
 Project Description: This my Flatiron School Phase 3 Project.  This Python CLI application includes a database created and modified with Python ORM methods.  This is using SQLite and includes different menus to access data from the database.  This allows the user to view existing Sporting Goods Store Departments.  The user can also add or delete Sporting Goods Departments, and also to view specific details of the Department.  The user can also view the different sporting goods equipment contained in a particular Department. They can further add, delete, and view details of the Department's equipment.  Another menu allows the user to make these changes or view displays of the equipment.  This applicationn uses a one-to-many relationship between Departments and Equipments.
 
-Used Python and SQLite based on the Project requirements. This included certain ORM and CLI requirements. Needed to included 2 model classes, and at least one-to-many relationship.  Appropriate constraints had to be included, as well as ORM methods.  The CLI required display menus for easy interaction for the user, and using to loops until they decide to exit.  Had to create and delete objects, and display and view related objects, and find by an attribute.  
-
+Used Python and SQLite based on the Project requirements. This included certain ORM and CLI requirements. Needed to included 2 model classes, and at least one-to-many relationship.  Appropriate constraints had to be included, as well as ORM methods.  The CLI required display menus for easy interaction for the user, and using to loops until they decide to exit.  Had to create and delete objects, and display and view related objects, and find by an attribute.  Code was required to follow best Object Oriented Programming best practices.  
 
 How to Install, Run, and Use the Project:
 Prerequisites:
