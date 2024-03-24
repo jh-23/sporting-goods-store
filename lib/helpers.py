@@ -3,7 +3,9 @@ from models.department import Department
 from models.equipment import Equipment
 
 def exit_program():
+    print("\n")
     print("Goodbye!  Please visit the Sporting Goods Store again!")
+    print("\n")
     exit()
 
 def list_departments():
@@ -24,14 +26,14 @@ def create_department():
         department = Department.create(name, location)
         print(f'Success: {department.name}')
         print("\n")
+        print("Sporting Goods Store Departments: ")
+        print("\n")
+        return list_departments()
     except Exception as exc:
         print("Error creating Sporting Goods department: ", exc)
-    print("\n")
-    print("Sporting Goods Store Departments: ")
-    print("\n")
-    return list_departments()
 
 def delete_department():
+    print("\n")
     number = int(input("Enter the number associated with the Sporting Goods department you wish to delete: "))
     departments = Department.get_all()
     if number <= len(departments):
@@ -43,8 +45,31 @@ def delete_department():
         print("\n")
         return list_departments()
     else:
-        print(f'Department: {department} not found')
-               
+        print(f'Department: {department.name} not found')
+        
+def update_department():
+    print("\n")
+    number = int(input("Enter the number associated with the Sporting Goods Department you wish to update: "))
+    departments = Department.get_all()
+    if number <= len(departments):
+        department = departments[number - 1]
+        try:
+            name = input("Enter the department's updated name (or press <Enter> to not update Department name): ").title()
+            if name:
+                department.name = name
+            location = input("Enter the department's updated store location (or press <Enter> to not update the Department's location): ").title()
+            if location:
+                department.location = location
+            department.update()
+            print(f'Success: {department.name} information updated')
+            print("\n")
+            return list_departments()
+        except Exception as exc:
+            print("Error updating department: ", exc)
+    else:
+        print(f'Department: Number is not a valid option')
+    
+                   
 def select_department_equipment():
     print("\n")
     number = int(input("Enter the number of department you wish to view: "))
@@ -64,7 +89,7 @@ def select_department_equipment():
 def show_equipment_details(department):
     equipment_list = department.equipments()
     for i, equipment in enumerate(equipment_list, start=1):
-        print(i, equipment.name)
+        print(f'{i}. {equipment.name}')
     print("\n")
     number = int(input("Enter the equipment number to view its details: "))
     print("\n")
@@ -93,6 +118,32 @@ def create_equipment(department):
             print(f'{i}. {equipment.name}')
     except Exception as exc:
         print("Error creating equipment: ", exc)
+        
+def update_equipment(department):
+    equipment_list = department.equipments()
+    for i, equipment in enumerate(equipment_list, start=1):
+        print(f'{i}. {equipment.name}')
+    print("\n")
+    number = int(input("Enter the equipment number you wish to update its details: "))
+    print("\n")
+    if number <= len(equipment_list):
+        equipment = equipment_list[number - 1]
+        try:
+            name = input("Enter the equipment's updated name (or press <Enter> to not update): ")
+            if name:
+                equipment.name = name
+            price = int(input("Enter the equipment's updated price with an integer (or press <Enter> to not update): "))
+            if price:
+                equipment.price = price
+            description = input("Enter the equipment's updated description (or press <Enter> to not update): ")
+            if description:
+                equipment.description = description
+            equipment.update()
+            print("")
+        except Exception as exc:
+            print("Error updating equipment: ", exc)
+    else:
+        print("equipment not a valid option")
 
 def delete_equipment(department):
     number = int(input("Enter the number associated with the equipment you wish to delete: "))

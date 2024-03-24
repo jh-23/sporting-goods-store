@@ -110,7 +110,7 @@ class Equipment:
             SET name = ?, price = ?, description = ?, department_id = ?
             WHERE id = ?
         """
-        CURSOR.execute(sql, (self.name, self.price, self.description, self.department_id))
+        CURSOR.execute(sql, (self.name, self.price, self.description, self.department_id, self.id))
         CONN.commit()
     
     def delete(self):

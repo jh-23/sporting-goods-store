@@ -6,8 +6,8 @@ class Department:
     all = {}
     
     def __init__(self, name, location, id=None):
-        self.name = name
         self.id = id
+        self.name = name
         self.location = location
         
     @property
@@ -83,7 +83,7 @@ class Department:
         """ Update the table row corresponding to the current Department instance."""
         sql = """
             UPDATE departments
-            SET name = ?, location = ?,
+            SET name = ?, location = ?
             WHERE id = ?
         """  
         
