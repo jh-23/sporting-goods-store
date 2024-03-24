@@ -11,7 +11,7 @@ from helpers import (
     show_equipment_details,
     delete_equipment,
     select_department_equipment,
-    update_equipment
+    update_equipment_details
 )
 
 def main_menu():
@@ -101,7 +101,7 @@ def equipments_menu(department):
         elif choice == "3":
             show_equipment_details(department)
         elif choice == "4":
-            update_equipment(department)
+            update_equipment_details(department)
         elif choice == "5":
             departments_menu()
         elif choice == "6":
