@@ -61,6 +61,7 @@ def update_department():
             if location:
                 department.location = location
             department.update()
+            print("\n")
             print(f'Department details updated successfully: {department.name}, {department.location}')
             print("\n")
             return list_departments()
@@ -160,21 +161,8 @@ def delete_equipment(department):
             print(f'{i}. {equipment.name}')
     else:
         print(f'Equipment: {equipment.name} not found')
-    
 
 
-
-
-
-
-
-
- 
-def equipments_less_than_50():
-    equipments = Equipment.get_all()
-    for equipment in equipments:
-        if equipment.price <= 50:
-            print(equipment.name)
         
 
             
